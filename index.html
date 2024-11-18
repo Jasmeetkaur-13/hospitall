@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Health Connect</title>
+    <style>
+        /* Basic Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url('your-image-url') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Dark Overlay */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 1;
+        }
+
+        /* Hero Content */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            padding: 20px;
+            text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: bold;
+            margin-bottom: 0.7rem;
+            letter-spacing: 1px;
+            color: #f0f0f0;
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #fff9f9;
+        }
+
+ 
+
+        /* Search Box */
+        .search-box {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .input-field {
+            padding: 10px 15px;
+            border: 5px solid #fff;
+            border-radius: 15px;
+            width: 220px;
+            font-size: 1rem;
+            color: #5363de;
+        }
+
+        .btn {
+            padding: 10px 15px;
+            background-color: #ff6b6b;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #ff4e4e;
+        }
+
+        /* Navbar */
+        .header-container {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .header-container h1 {
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .header-line {
+            width: 80%;
+            height: 5px;
+            background-color: white;
+            margin: 10px auto 20px auto;
+        }
+
+        .navbar-container {
+            background-color: white;
+            padding: 10px 0;
+            border-radius: 8px;
+            margin: 0 auto;
+            max-width: 70%;
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            color: #007bff !important;
+            font-weight: 600;
+        }
+
+        .navbar-toggler-icon {
+            color: #007bff;
+        }
+
+        /* Modal Styles */
+        .modal-body {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        /* Responsive Text */
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            .hero-description {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            .hero-description {
+                font-size: 1.1rem;
+            }
+            .search-box {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header-container sticky-top">
+        <h1>Health Connect</h1>
+        <div class="header-line"></div>
+
+        <!-- White Navigation Bar in Middle of Blue Header -->
+        <div class="navbar-container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#doctors">Doctors</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#blog">Latest Articles</a>
+                                <a class="dropdown-item" href="#tips">Health Tips</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#community">Community</a></li>
+                        <!-- Login/Signup Icons -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="authDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-user-circle"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="authDropdown">
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#signupModal">Sign Up</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to Health Connect</h1>
+            <p class="hero-description">Your health is our priority. Explore our services and connect with qualified professionals.</p>
+            <div class="search-box">
+                <input type="text" class="input-field" placeholder="Search for services, doctors..." id="searchInput">
+                <button class="btn">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Username" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SignUp Modal -->
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signupModalLabel">Sign Up</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="signupForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Full Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Create Password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scroll functionality for navigation links
+        $(document).ready(function(){
+            $(".navbar-nav .nav-link").on('click', function(event) {
+                if (this.hash !== "") {
+                    event.preventDefault();
+                    var hash = this.hash;
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top - 50
+                    }, 800);
+                }
+            });
+        });
+
+        // Search functionality
+        document.querySelector(".input-field").addEventListener("input", function() {
+            let query = this.value.toLowerCase();
+            console.log("Search query:", query);  // Logic to search for services will go here
+        });
+    </script>
+</body>
+
+
+
+
+
+
+
+<!-- DOCTOR SECTION -->
+<style>
+    /* Doctors Section Heading Styling */
+    .doctors-section h2 {
+        text-align: center;
+        color: #0056b3;
+        font-size: 2.5em;
+        font-weight: bold;
+        margin-bottom: 40px;
+    }
+
+    /* Optional additional styling */
+    .doctors-section {
+        background-color: #c7cbcf;
+        padding: 90px;
+        border-radius: 25px;
+    }
+
+    .card-title.text-blue,
+    .card-text.text-blue {
+        color: #0056b3;
+    }
+
+    .btn-outline-light {
+        color: #0056b3;
+        border-color: #0056b3;
+    }
+
+    .btn-outline-light:hover {
+        background-color: #0056b3;
+        color: white;
+    }
+</style>
+
+<section id="doctors" class="doctors-section mb-4">
+    <h2>Meet Our Doctors</h2>
+    <div class="row">
+        <div class="col-md-3 mb-2">
+            <div class="card shadow border-0" style="height: 450px;">
+                <img src="doctor1.jpg" class="card-img-top mx-auto" alt="Doctor 1">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-blue">Dr. Smith</h5>
+                    <p class="card-text text-blue">Cardiologist</p>
+                    <a href="#" class="btn btn-outline-light">View Profile</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-2">
+            <div class="card shadow border-0" style="height: 450px;">
+                <img src="doctor4.jpg" class="card-img-top mx-auto" alt="Doctor 2">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-blue">Dr. Johnson</h5>
+                    <p class="card-text text-blue">Pediatrician</p>
+                    <a href="#" class="btn btn-outline-light">View Profile</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-2">
+            <div class="card shadow border-0" style="height: 450px;">
+                <img src="doctor3.jpg" class="card-img-top mx-auto" alt="Doctor 3">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-blue">Dr. Williams</h5>
+                    <p class="card-text text-blue">Neurologist</p>
+                    <a href="#" class="btn btn-outline-light">View Profile</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-2">
+            <div class="card shadow border-0" style="height: 450px;">
+                <img src="doctor.jpg" class="card-img-top mx-auto" alt="Doctor 2">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-blue">Dr. Johnson</h5>
+                    <p class="card-text text-blue">Pediatrician</p>
+                    <a href="#" class="btn btn-outline-light">View Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+<style>
+    /* Shared Heading Styling */
+    .section-heading {
+        text-align: center;
+        color: #0056b3;
+        font-size: 2.5em;
+        font-weight: bold;
+        margin-bottom: 5px;
+        margin-top: 40px;
+    }
+
+  
+</style>
+
+<!-- Services Section -->
+<section id="services" class="services-section text-center mb-4">
+    <h2 class="section-heading">Our Services</h2>
+    <div class="row">
+        <!-- Content for services goes here -->
+    </div>
+</section>
+
+    <div class="row">
+        <!-- Psychiatry -->
+        <div class="col-md-3 mb-3">
+            <div class="card text-center p-3 doctor-card">
+                <i class="fas fa-brain fa-3x text-primary"></i>
+                <h5 class="card-title mt-3">Psychiatry</h5>
+                <button class="btn btn-primary mt-2" data-toggle="modal" data-target="#psychiatryModal">Learn More</button>
+            </div>
+        </div>
+        <!-- Gynecology -->
+        <div class="col-md-3 mb-3">
+            <div class="card text-center p-3 doctor-card">
+                <i class="fas fa-female fa-3x text-primary"></i>
+                <h5 class="card-title mt-3">Gynecology</h5>
+                <button class="btn btn-primary mt-2" data-toggle="modal" data-target="#gynecologyModal">Learn More</button>
+            </div>
+        </div>
+        <!-- Pulmonology -->
+        <div class="col-md-3 mb-3">
+            <div class="card text-center p-3 doctor-card">
+                <i class="fas fa-lungs fa-3x text-primary"></i>
+                <h5 class="card-title mt-3">Pulmonology</h5>
+                <button class="btn btn-primary mt-2" data-toggle="modal" data-target="#pulmonologyModal">Learn More</button>
+            </div>
+        </div>
+        <!-- Orthopedics -->
+        <div class="col-md-3 mb-3">
+            <div class="card text-center p-3 doctor-card">
+                <i class="fas fa-bone fa-3x text-primary"></i>
+                <h5 class="card-title mt-3">Orthopedics</h5>
+                <button class="btn btn-primary mt-2" data-toggle="modal" data-target="#orthopedicsModal">Learn More</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Cardiology -->
+        <div class="col-md-3 mb-3">
+            <div class="card text-center p-3 doctor-card">
+                <i class="fas fa-heartbeat fa-3x text-primary"></i>
+                <h5 class="card-title mt-3">Cardiology</h5>
+                <button class="btn btn-primary mt-2" data-toggle="modal" data-target="#cardiologyModal">Learn More</button>
+            </div>
+        </div>
+        <!-- Ophthalmology -->
+        <div class="col-md-3 mb-3">
+            <div class="card text-center p-3 doctor-card">
+                <i class="fas fa-eye fa-3x text-primary"></i>
+                <h5 class="card-title mt-3">Ophthalmology</h5>
+                <button class="btn btn-primary mt-2" data-toggle="modal" data-target="#ophthalmologyModal">Learn More</button>
+            </div>
+        </div>
+        <!-- Dentistry -->
+        <div class="col-md-3 mb-3">
+            <div class="card text-center p-3 doctor-card">
+                <i class="fas fa-tooth fa-3x text-primary"></i>
+                <h5 class="card-title mt-3">Dentistry</h5>
+                <button class="btn btn-primary mt-2" data-toggle="modal" data-target="#dentistryModal">Learn More</button>
+            </div>
+        </div>
+        <!-- General Medicine -->
+        <div class="col-md-3 mb-3">
+            <div class="card text-center p-3 doctor-card">
+                <i class="fas fa-stethoscope fa-3x text-primary"></i>
+                <h5 class="card-title mt-3">General Medicine</h5>
+                <button class="btn btn-primary mt-2" data-toggle="modal" data-target="#generalMedicineModal">Learn More</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modals -->
+<!-- Psychiatry Modal -->
+<div class="modal fade" id="psychiatryModal" tabindex="-1" aria-labelledby="psychiatryModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="psychiatryModalLabel">Psychiatry</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Psychiatry focuses on the diagnosis, treatment, and prevention of mental, emotional, and behavioral disorders.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Gynecology Modal -->
+<div class="modal fade" id="gynecologyModal" tabindex="-1" aria-labelledby="gynecologyModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="gynecologyModalLabel">Gynecology</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Gynecology is concerned with the health of the female reproductive system, including diagnosis and treatment of disorders.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Pulmonology Modal -->
+<div class="modal fade" id="pulmonologyModal" tabindex="-1" aria-labelledby="pulmonologyModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="pulmonologyModalLabel">Pulmonology</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Pulmonology is the medical specialty dealing with diseases involving the respiratory tract.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Orthopedics Modal -->
+<div class="modal fade" id="orthopedicsModal" tabindex="-1" aria-labelledby="orthopedicsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="orthopedicsModalLabel">Orthopedics</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Orthopedics focuses on injuries and diseases of the musculoskeletal system.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="cardiologyModal" tabindex="-1" aria-labelledby="cardiologyModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cardiologyModalLabel">Cardiology</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Cardiology specializes in heart health, addressing issues related to the heart and blood vessels.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Ophthalmology -->
+<div class="modal fade" id="ophthalmologyModal" tabindex="-1" aria-labelledby="ophthalmologyModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ophthalmologyModalLabel">Ophthalmology</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Ophthalmology deals with the diagnosis and treatment of eye disorders.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Dentistry -->
+<div class="modal fade" id="dentistryModal" tabindex="-1" aria-labelledby="dentistryModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="dentistryModalLabel">Dentistry</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Dentistry focuses on oral health, including the diagnosis and treatment of dental issues.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for General Medicine -->
+<div class="modal fade" id="generalMedicineModal" tabindex="-1" aria-labelledby="generalMedicineModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="generalMedicineModalLabel">General Medicine</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                General Medicine provides primary healthcare for a wide range of health issues and conditions.
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+    
+<!-- BLOG -->
+  <title>Blog Section</title>
+  <style>
+    /* Basic Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Blog Section Styles */
+    .section {
+        padding: 50px 20px;
+        background-color: #f9f9f9;
+        text-align: center;
+    }
+
+    .section-subtitle {
+        font-size: 1.5em;
+        color: #555;
+        margin-bottom: 15px;
+    }
+
+    .section-title {
+        font-size: 2.5em;
+        color: #333;
+        margin-bottom: 30px;
+    }
+
+    .blog-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 50px;
+    }
+
+    .blog-card {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        transition: transform 0.3s;
+        overflow: hidden;
+    }
+
+    .blog-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .blog-card-content {
+        padding: 20px;
+    }
+
+    .blog-meta {
+        font-size: 0.9em;
+        color: #777;
+        margin-bottom: 15px;
+    }
+
+    .blog-title {
+        font-size: 1.5em;
+        margin: 10px 0;
+        color: #007BFF;
+    }
+
+    .blog-date {
+        font-size: 0.85em;
+        color: #999;
+    }
+
+    .blog-text {
+        font-size: 1em;
+        color: #555;
+        margin: 15px 0;
+    }
+
+    .btn-text {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 10px 15px;
+        background-color: #007BFF;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    .btn-text:hover {
+        background-color: #0056b3;
+    }
+
+    /* Health Tips Section */
+    .tips-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .tip-card {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        width: 250px; /* Adjust the width as needed */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .tip-card h3 {
+        font-size: 1.2em;
+        color: #007BFF;
+        margin-bottom: 10px;
+    }
+
+    .tip-card p {
+        font-size: 0.9em;
+        color: #555;
+    }
+</style>
+<!-- </head>
+<body> -->
+
+<section class="section blog" aria-labelledby="blog-label">
+    <div class="container">
+
+        <style>
+            /* General Styling for Section Titles */
+            .section-title {
+                text-align: center;
+                color: #0056b3;
+                font-size: 2.5em;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+        
+        
+        
+        </style>
+        
+        <!-- Blogs Section -->
+        <section id="blogs" class="blogs-section text-center mb-4">
+            <p class="section-subtitle title-lg text-center" id="blog-label" data-reveal="bottom">Blogs & Articles</p>
+            <h2 class="section-title headline-md text-center" data-reveal="bottom">Latest Articles</h2>
+            <div class="row">
+                <!-- Blog content goes here -->
+            </div>
+        </section>
+        
+        <!-- Blog Cards Container -->
+        <div class="blog-container">
+
+            <!-- Blog Card 1 -->
+            <article class="blog-card" data-reveal="bottom">
+                <div class="blog-card-content">
+                    <div class="blog-meta">
+                        <span><ion-icon name="person-outline"></ion-icon> Admin</span>
+                        <span><ion-icon name="folder-outline"></ion-icon> Health Tips</span>
+                    </div>
+                    <h3 class="blog-title">Could Intermittent Fasting Reduce Breast Cancer Risk?</h3>
+                    <time datetime="2022-01-28" class="blog-date">28 January, 2022</time>
+                    <p class="blog-text">Intermittent fasting is becoming more popular, but could it also play a role in reducing the risk of breast cancer? Experts weigh in on its potential benefits.</p>
+                    <a href="#" class="btn-text">Read More</a>
+                </div>
+            </article>
+
+            <!-- Blog Card 2 -->
+            <article class="blog-card" data-reveal="bottom">
+                <div class="blog-card-content">
+                    <div class="blog-meta">
+                        <span><ion-icon name="person-outline"></ion-icon> Admin</span>
+                        <span><ion-icon name="folder-outline"></ion-icon> Mental Health</span>
+                    </div>
+                    <h3 class="blog-title">Give Children More Autonomy During the Pandemic</h3>
+                    <time datetime="2022-01-28" class="blog-date">28 January, 2022</time>
+                    <p class="blog-text">Experts suggest that allowing children more autonomy during the pandemic can improve mental health and development. Learn how to empower your children.</p>
+                    <a href="#" class="btn-text">Read More</a>
+                </div>
+            </article>
+
+            <!-- Blog Card 3 -->
+            <article class="blog-card" data-reveal="bottom">
+                <div class="blog-card-content">
+                    <div class="blog-meta">
+                        <span><ion-icon name="person-outline"></ion-icon> Admin</span>
+                        <span><ion-icon name="folder-outline"></ion-icon> Nutrition</span>
+                    </div>
+                    <h3 class="blog-title">How Binge Eating and Drinking Affect the Liver</h3>
+                    <time datetime="2022-01-28" class="blog-date">28 January, 2022</time>
+                    <p class="blog-text">Overeating and excessive drinking can harm your liver over time. Discover the short- and long-term effects of these habits on liver health.</p>
+                    <a href="#" class="btn-text">Read More</a>
+                </div>
+            </article>
+
+        </div>
+
+        <!-- Health Tips Section -->
+        <h2 class="section-title headline-md text-center" data-reveal="bottom">Health Tips</h2>
+        <div class="tips-container">
+            <div class="tip-card">
+                <h3>Stay Hydrated</h3>
+                <p>Drink at least 8 glasses of water a day to keep your body hydrated and healthy.</p>
+            </div>
+            <div class="tip-card">
+                <h3>Get Enough Sleep</h3>
+                <p>Sleep for 7-8 hours daily to help your body recover and recharge.</p>
+            </div>
+            <div class="tip-card">
+                <h3>Practice Mindfulness</h3>
+                <p>Incorporate mindfulness and meditation into your daily routine to reduce stress.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+<!-- CONTACT -->
+<title>Contact Us</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome for icons -->
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .contact-us {
+        padding: 50px 20px;
+        background-color: #f0f8ff; /* Light blue background */
+    }
+
+    .contact-us h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #0056b3; /* Dark blue for the heading */
+        font-size: 2em; /* Increase heading size */
+        font-weight: bold;
+    }
+
+    .contact-us p {
+        text-align: center;
+        margin-bottom: 40px;
+        color: #333; /* Dark grey for text */
+        font-size: 1.1em; /* Slightly larger font */
+    }
+
+    .contact-form .form-group {
+        margin-bottom: 20px;
+    }
+
+    .contact-form .form-control {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        width: 100%;
+        transition: border-color 0.3s;
+    }
+
+    .contact-form .form-control:focus {
+        border-color: #0056b3; /* Highlight border on focus */
+        box-shadow: 0 0 5px rgba(0, 86, 179, 0.5); /* Shadow effect */
+    }
+
+    .contact-details {
+        padding: 20px;
+        background-color: #fff; /* White background for details */
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    }
+
+    .contact-info {
+        list-style: none;
+        padding: 0;
+    }
+
+    .contact-info li {
+        margin: 10px 0;
+        font-size: 1em;
+        color: #555;
+        display: flex;
+        align-items: center;
+    }
+
+    .contact-info li i {
+        margin-right: 10px; /* Space between icon and text */
+        color: #0056b3; /* Color for icons */
+    }
+
+    .map-container {
+        margin-top: 20px;
+        width: 100%;
+        height: 300px; /* Set the height of the map */
+        border-radius: 8px; /* Rounded corners for the map */
+        overflow: hidden; /* Ensure corners are rounded */
+    }
+
+    .map-container iframe {
+        width: 100%;
+        height: 100%;
+    }
+
+    .btn-submit {
+        background-color: #0056b3; /* Blue background */
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s; /* Add transition effects */
+    }
+
+    .btn-submit:hover {
+        background-color: #004494; /* Darker blue on hover */
+        transform: scale(1.05); /* Slight grow effect */
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .contact-us {
+            padding: 30px 10px; /* Adjust padding for smaller screens */
+        }
+
+        .contact-details {
+            margin-top: 20px; /* Space for smaller screens */
+        }
+    }
+</style>
+
+
+<section class="contact-us">
+<div class="container">
+    <h2>Contact Us</h2>
+    <p>If you have any questions or inquiries, feel free to reach out to us. We'd love to hear from you!</p>
+    
+    <div class="row">
+        <!-- Contact Form -->
+        <div class="col-md-6">
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" class="form-control" placeholder="Enter the subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" class="form-control" rows="5" placeholder="Your message" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Send Message</button>
+            </form>
+        </div>
+
+        <!-- Contact Details & Map -->
+        <div class="col-md-6">
+            <div class="contact-details">
+                <h3>Our Contact Information</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-phone-alt"></i> +91 98765 43210</li>
+                    <li><i class="fas fa-envelope"></i> info@healthconnect.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 456 Health Lane, Mumbai, India</li>
+                </ul>
+
+                <div class="map-container">
+                    <iframe src="https://maps.google.com/maps?q=Mumbai&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+                            frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+
+      <title>FAQ and Chatbot</title>
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* FAQ Section Styling */
+        .faq-section {
+            padding: 50px 20px;
+            background-color: #f0f8ff;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            color: #0056b3;
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            background-color: #e0f7fa;
+            padding: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+
+        .faq-question:hover {
+            background-color: #b2ebf2;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 15px;
+            background-color: #ffffff;
+        }
+
+        .toggle-icon {
+            font-size: 1.5em;
+            color: #0056b3;
+            transition: transform 0.3s;
+        }
+
+        .faq-question.active .toggle-icon {
+            transform: rotate(45deg);
+        }
+
+        /* Chatbot Styles */
+        .chatbot {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #0056b3;
+            color: #fff;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            font-size: 24px;
+        }
+
+        .chat-window {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 300px;
+            height: 400px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background-color: #0056b3;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 10px;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .chat-input button {
+            padding: 10px;
+            border: none;
+            background-color: #0056b3;
+            color: white;
+            border-radius: 4px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .chat-input button:hover {
+            background-color: #004494;
+        }
+
+        .user-message {
+            color: #333;
+            margin: 5px 0;
+        }
+
+        .bot-response {
+            color: #0056b3;
+            margin: 5px 0;
+        }
+    </style>
+    <script>
+        // FAQ Toggle Function
+        function toggleAnswer(element) {
+            const answer = element.nextElementSibling;
+            answer.style.display = answer.style.display === "block" ? "none" : "block";
+            element.classList.toggle("active");
+        }
+
+        // Chatbot Toggle Function
+        function toggleChat() {
+            const chatWindow = document.querySelector('.chat-window');
+            chatWindow.style.display = chatWindow.style.display === "flex" ? "none" : "flex";
+        }
+
+        // Chatbot Message Handling
+        function sendMessage() {
+            const input = document.querySelector('.chat-input input');
+            const messagesContainer = document.querySelector('.chat-messages');
+            const userMessage = input.value.trim();
+
+            if (userMessage) {
+                const userMessageElement = document.createElement('div');
+                userMessageElement.classList.add('user-message');
+                userMessageElement.textContent = userMessage;
+                messagesContainer.appendChild(userMessageElement);
+                input.value = '';
+
+                setTimeout(() => {
+                    const botResponse = getBotResponse(userMessage);
+                    const botMessageElement = document.createElement('div');
+                    botMessageElement.classList.add('bot-response');
+                    botMessageElement.textContent = botResponse;
+                    messagesContainer.appendChild(botMessageElement);
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                }, 1000);
+            }
+        }
+
+        // Predefined Bot Responses
+        function getBotResponse(message) {
+            const responses = {
+                "What services do you offer?": "We offer health consultations, diagnostics, and health education.",
+                "How can I schedule an appointment?": "You can schedule an appointment by contacting us or using our online system.",
+                "What payment methods do you accept?": "We accept cash, credit cards, and health insurance.",
+                "What are your operating hours?": "Our operating hours are Monday to Friday, 9 AM to 5 PM.",
+                "help": "Feel free to ask any question regarding our services!"
+            };
+            return responses[message] || "I'm sorry, I didn't understand that. Try asking something else!";
+        }
+    </script>
+
+<!-- FAQ Section -->
+<section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-container">
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">
+                <h4>What services do you offer?</h4>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>We offer a variety of health services including consultations, diagnostics, and health education.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">
+                <h4>How can I schedule an appointment?</h4>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>You can schedule an appointment by contacting us via phone or through our online appointment system.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">
+                <h4>What payment methods do you accept?</h4>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>We accept cash, credit cards, and various health insurance plans.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">
+                <h4>What are your operating hours?</h4>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Our operating hours are Monday to Friday, 9 AM to 5 PM.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Chatbot Button and Chat Window -->
+<div class="chatbot" onclick="toggleChat()">
+    💬
+</div>
+
+<div class="chat-window">
+    <div class="chat-header">Chat with Us</div>
+    <div class="chat-messages"></div>
+    <div class="chat-input">
+        <input type="text" placeholder="Type your message..." onkeypress="if(event.key === 'Enter') sendMessage()" />
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <title>Community Section</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f9fc; /* Light background */
+            color: #333;
+        }
+
+        .community-section {
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #e1f5fe 0%, #ffffff 100%);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 30px auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .community-section h2 {
+            color: #0277bd; /* Bright blue */
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .community-section p {
+            color: #555;
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+
+        .community-features {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .feature-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 5px;
+            flex: 1 1 45%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            background-color: #e3f2fd;
+        }
+
+        .feature-card i {
+            color: #0277bd;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .feature-card h4 {
+            color: #333;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .message-area {
+            margin-top: 20px;
+            border-top: 2px solid #0277bd;
+            padding-top: 15px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .message-area h3 {
+            color: #0277bd;
+            margin-bottom: 15px;
+        }
+
+        .message-area textarea {
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            resize: none;
+            transition: border-color 0.3s;
+        }
+
+        .message-area textarea:focus {
+            border-color: #0277bd;
+            outline: none;
+        }
+
+        .send-message {
+            margin-top: 10px;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #0277bd;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .send-message:hover {
+            background-color: #01579b;
+        }
+
+        .message-display {
+            margin-top: 20px;
+            border-top: 2px solid #0277bd;
+            padding-top: 15px;
+            text-align: left;
+        }
+
+        .message-display h4 {
+            color: #0277bd;
+            margin-bottom: 10px;
+        }
+
+        .message-display ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .message-display li {
+            background-color: #e1f5fe;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="community-section">
+        <h2>Join Our Community</h2>
+        <p>Stay connected with like-minded individuals and contribute to a better future.</p>
+
+        <div class="community-features">
+            <div class="feature-card">
+                <i class="fas fa-comments"></i>
+                <h4>Discussion Forums</h4>
+                <p>Engage in meaningful conversations on a variety of topics.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-users"></i>
+                <h4>Join the Group</h4>
+                <p>Become a part of our growing community.</p>
+            </div>
+        </div>
+
+        <div class="message-area">
+            <h3>Leave a Message</h3>
+            <textarea placeholder="Share your thoughts..."></textarea>
+            <button class="send-message">Send Message</button>
+        </div>
+
+        <div class="message-display">
+            <h4>Recent Messages:</h4>
+            <ul>
+                <li>User1: Great to be part of this community!</li>
+                <li>User2: Looking forward to more discussions.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+     <title>Footer</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your main CSS file -->
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script> <!-- Ionicons -->
+    <style>
+        /* Footer Section */
+        .footer {
+            background-color: #121212; /* Darker background */
+            color: #ffffff; /* White text */
+            padding: 60px 0; /* Vertical padding */
+            text-align: center;
+        }
+
+        .footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .footer-info p {
+            margin: 10px 0;
+            font-size: 1.1rem;
+            color: #bbb; /* Subtle text */
+        }
+
+        .footer-info address {
+            margin-top: 15px;
+        }
+
+        .footer-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-list-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #00bfff; /* Accent color */
+            font-weight: bold;
+        }
+
+        .footer-link {
+            display: block;
+            color: #ddd;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            color: #00bfff; /* Change color on hover */
+        }
+
+        .footer-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .input-field {
+            padding: 12px;
+            font-size: 1rem;
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #444;
+            border-radius: 5px;
+            transition: border 0.3s;
+        }
+
+        .input-field:focus {
+            border-color: #00bfff;
+            outline: none;
+        }
+
+        .btn {
+            background-color: #00bfff;
+            color: #fff;
+            padding: 12px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #009ac1;
+        }
+
+        .social-list {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            color: #ffffff;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+
+        .social-link:hover {
+            color: #00bfff; /* Change color on hover */
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            margin-top: 40px;
+        }
+
+        .footer-bottom .copyright {
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-info">
+                    <p class="footer-list-title">About Us</p>
+                    <p>At Health Connect, we prioritize your health by connecting you with trusted healthcare professionals and resources for easy access to quality care.</p>
+                    <address>
+                        <ion-icon name="map-outline"></ion-icon>
+                        <span>Thane, Mumbai<br>India</span>
+                    </address>
+                </div>
+
+                <ul class="footer-list">
+                    <p class="footer-list-title">Services</p>
+                    <li><a href="#" class="footer-link">Conditions</a></li>
+                    <li><a href="#" class="footer-link">Listing</a></li>
+                    <li><a href="#" class="footer-link">How It Works</a></li>
+                    <li><a href="#" class="footer-link">What We Offer</a></li>
+                    <li><a href="#" class="footer-link">Latest News</a></li>
+                    <li><a href="#" class="footer-link">Contact Us</a></li>
+                </ul>
+
+                <ul class="footer-list">
+                    <p class="footer-list-title">Useful Links</p>
+                    <li><a href="#" class="footer-link">Terms of Use</a></li>
+                    <li><a href="#" class="footer-link">Our Services</a></li>
+                    <li><a href="#" class="footer-link">Join as a Doctor</a></li>
+                    <li><a href="#" class="footer-link">New Guests List</a></li>
+                    <li><a href="#" class="footer-link">The Team List</a></li>
+                </ul>
+
+                <div class="footer-list">
+                    <p class="footer-list-title">Subscribe</p>
+                    <form action="" class="footer-form">
+                        <input type="email" name="email" placeholder="Email" class="input-field">
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                    <p class="text">Get the latest updates via email. You may unsubscribe anytime.</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">&copy; JasmeetKaur | All Rights Reserved</p>
+                <ul class="social-list">
+                    <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+                    <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+                    <li><a href="#" class="social-link"><ion-icon name="logo-google"></ion-icon></a></li>
+                    <li><a href="#" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+                    <li><a href="#" class="social-link"><ion-icon name="logo-pinterest"></ion-icon></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
